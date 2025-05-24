@@ -7,7 +7,9 @@ import dev.zacsweers.metro.ContributesBinding
 import dev.zacsweers.metro.Inject
 import dev.zacsweers.metro.SingleIn
 import dev.zacsweers.metro.createGraphFactory
+import sk.ursus.base.Graphs
 import sk.ursus.base.LOG
+import sk.ursus.base.blabla
 
 class App : Application() {
 
@@ -30,11 +32,9 @@ class App : Application() {
         Log.d("Default", "syncer=$syncer")
         val syncer2 = appGraph.omgSyncer
         Log.d("Default", "syncer2=$syncer2")
-    }
-}
 
-object Graphs {
-    val graphs = mutableListOf<Any>()
+        blabla()
+    }
 }
 
 @SingleIn(AppScope::class)

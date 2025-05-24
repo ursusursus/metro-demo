@@ -8,8 +8,14 @@ import dev.zacsweers.metro.Provides
 interface HttpClientProvider {
     @QualifierFor(AppScope::class)
     @Provides
-    fun provideHttpClient(): HttpClient {
+    fun provideAppHttpClient(): HttpClient {
         return HttpClient(name = "App")
+    }
+
+    @QualifierFor(UserScope::class)
+    @Provides
+    fun provideUserHttpClient(): HttpClient {
+        return HttpClient(name = "User")
     }
 }
 
