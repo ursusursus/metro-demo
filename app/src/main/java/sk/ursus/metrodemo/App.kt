@@ -35,9 +35,17 @@ class App : Application() {
 
         blabla()
 
-        val userGraph = createGraphFactory<UserGraph.Factory>().create(appGraph = appGraph)
+        val userGraph = createGraphFactory<UserGraph.Factory>().create(appGraph = appGraph, userId = "123")
+        Graphs.graphs += userGraph
         val userRepository = userGraph.userRepository
         userRepository.whatever()
+
+        val appPlugins = appGraph.plugins
+        val userPlugins = userGraph.plugins
+        Log.d("Default", "appPlugins=$appPlugins")
+        Log.d("Default", "userPlugins=$userPlugins")
+
+        Log.d("Default", "graphs=${Graphs.graphs.map { it.name }}")
     }
 }
 
