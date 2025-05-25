@@ -12,7 +12,7 @@ import kotlin.io.encoding.ExperimentalEncodingApi
 @Inject
 @ContributesIntoSet(AppScope::class)
 class ThirdProcessor(
-    @QualifierFor(UserScope::class) private val httpClient: HttpClient
+    @QualifierFor(AppScope::class) private val httpClient: HttpClient
 ) : Processor {
     override fun process() {
     }

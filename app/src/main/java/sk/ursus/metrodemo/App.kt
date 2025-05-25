@@ -34,6 +34,10 @@ class App : Application() {
         Log.d("Default", "syncer2=$syncer2")
 
         blabla()
+
+        val userGraph = createGraphFactory<UserGraph.Factory>().create(appGraph = appGraph)
+        val userRepository = userGraph.userRepository
+        userRepository.whatever()
     }
 }
 

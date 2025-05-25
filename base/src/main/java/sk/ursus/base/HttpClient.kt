@@ -11,7 +11,10 @@ interface HttpClientProvider {
     fun provideAppHttpClient(): HttpClient {
         return HttpClient(name = "App")
     }
+}
 
+@ContributesTo(UserScope::class)
+interface UserHttpClientProvider {
     @QualifierFor(UserScope::class)
     @Provides
     fun provideUserHttpClient(): HttpClient {
