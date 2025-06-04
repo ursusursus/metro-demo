@@ -22,6 +22,7 @@ interface AppGraph : PluggableGraph {
     val repository: FooRepository
     val processors: Set<Processor>
     val omgSyncer: OmgSyncer
+    val fooViewModelFactory: FooViewModelFactory
 
     @DependencyGraph.Factory
     interface Factory {
