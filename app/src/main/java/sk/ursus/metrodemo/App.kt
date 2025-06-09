@@ -47,7 +47,7 @@ class App : Application() {
 
         Log.d("Default", "graphs=${Graphs.graphs.map { it.name }}")
 
-        val viewModel = appGraph.fooViewModelFactory.create(id = "hello")
+        val viewModel = appGraph.fooViewModel
         Log.d("Default", "viewModel=$viewModel")
     }
 }
