@@ -20,7 +20,7 @@ interface FooRepository {
 @ContributesBinding(AppScope::class)
 class FooRepositoryImpl(
     private val context: Context,
-    @QualifierFor(AppScope::class) private val httpClient: HttpClient
+    @param:QualifierFor(AppScope::class) private val httpClient: HttpClient
 ) : FooRepository {
 
     override fun foo() {
@@ -32,7 +32,7 @@ class FooRepositoryImpl(
 @Inject
 class UserRepository(
     private val logger: LOG,
-    @QualifierFor(UserScope::class) private val httpClient: HttpClient
+    @param:QualifierFor(UserScope::class) private val httpClient: HttpClient
 ) {
     fun whatever() {
         logger.d(message = "whatever=$httpClient")

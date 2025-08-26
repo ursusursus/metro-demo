@@ -2,6 +2,7 @@ package sk.ursus.metrodemo
 
 import android.content.Context
 import dev.zacsweers.metro.AppScope
+import dev.zacsweers.metro.ContributesTo
 import dev.zacsweers.metro.DependencyGraph
 import dev.zacsweers.metro.GraphExtension
 import dev.zacsweers.metro.Provides
@@ -19,7 +20,6 @@ interface AppGraph : PluggableGraph {
     @QualifierFor(AppScope::class)
     override val plugins: Set<Plugin>
 
-    val userGraphFactory: UserGraph.Factory
 
     val repository: FooRepository
     val processors: Set<Processor>
@@ -41,6 +41,11 @@ interface UserGraph : PluggableGraph {
 
     val userId: String
     val userRepository: UserRepository
+
+    @ContributesTo(AppScope::class)
+    interface Parent {
+        val userGraphFactory: Factory
+    }
 
     @GraphExtension.Factory
     interface Factory {

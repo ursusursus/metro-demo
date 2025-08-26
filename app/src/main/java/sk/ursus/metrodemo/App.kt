@@ -35,7 +35,7 @@ class App : Application() {
 
         blabla()
 
-        val userGraph = appGraph.userGraphFactory.create(userId = "123")
+        val userGraph = (appGraph as UserGraph.Parent).userGraphFactory.create(userId = "123")
         Graphs.graphs += userGraph
         val userRepository = userGraph.userRepository
         userRepository.whatever()
