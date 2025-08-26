@@ -3,7 +3,7 @@ package sk.ursus.metrodemo
 import android.content.Context
 import dev.zacsweers.metro.AppScope
 import dev.zacsweers.metro.DependencyGraph
-import dev.zacsweers.metro.Extends
+import dev.zacsweers.metro.GraphExtension
 import dev.zacsweers.metro.Provides
 import sk.ursus.base.OmgSyncer
 import sk.ursus.base.PluggableGraph
@@ -12,12 +12,14 @@ import sk.ursus.base.Processor
 import sk.ursus.base.QualifierFor
 import sk.ursus.base.UserScope
 
-@DependencyGraph(AppScope::class, isExtendable = true)
+@DependencyGraph(AppScope::class)
 interface AppGraph : PluggableGraph {
     override val name: String get() = "AppGraph"
 
     @QualifierFor(AppScope::class)
     override val plugins: Set<Plugin>
+
+    val userGraphFactory: UserGraph.Factory
 
     val repository: FooRepository
     val processors: Set<Processor>
@@ -30,7 +32,7 @@ interface AppGraph : PluggableGraph {
     }
 }
 
-@DependencyGraph(UserScope::class)
+@GraphExtension(UserScope::class)
 interface UserGraph : PluggableGraph {
     override val name: String get() = "UserGraph($userId)"
 
@@ -40,8 +42,8 @@ interface UserGraph : PluggableGraph {
     val userId: String
     val userRepository: UserRepository
 
-    @DependencyGraph.Factory
+    @GraphExtension.Factory
     interface Factory {
-        fun create(@Extends appGraph: AppGraph, @Provides userId: String): UserGraph
+        fun create(@Provides userId: String): UserGraph
     }
 }
