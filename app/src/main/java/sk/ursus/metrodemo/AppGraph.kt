@@ -20,7 +20,6 @@ interface AppGraph : PluggableGraph {
     @QualifierFor(AppScope::class)
     override val plugins: Set<Plugin>
 
-
     val repository: FooRepository
     val processors: Set<Processor>
     val omgSyncer: OmgSyncer
